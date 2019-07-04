@@ -1,25 +1,16 @@
-// array containing words to be guessed
+  // array containing words to be guessed w/o spaces for now
 
-var words = ['baseball', 'football', 'ronaldo', ' joe dimaggio', 'ted williams', 'dodgers', 'barcelona', 'mariners', 'world cup', 'alex morgan', 'mia hamm', 'lionel messi', 'edgar martinez', 'junior', 'ac milan', 'pele', 'seattle reign', 'guatemala', 'refried beans', 'tres leches'];
+var words = ['baseball', 'football', 'ronaldo', ' joedimaggio', 'tedwilliams', 'dodgers', 'barcelona', 'mariners', 'worldcup', 'alexmorgan', 'miahamm', 'lionelmessi', 'edgarmartinez', 'junior', 'acmilan', 'pele', 'seattlereign', 'guatemala', 'refriedbeans', 'tresleches'];
 
+var valid = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 // variables needed
 
 var wins = 0;
 var losses = 0;
 var triesLeft = 10;
-var triesUsed = 0;
-
-// variables marching the html
-
-var instructions = document.getElementById('instructions');
-var currentWord = document.getElementById('current-word');
-var userGuess = document.getElementById('user-guess');
-var guessesLeft = document.getElementById('guesses-left');
-var guessesUsed = document.getElementById('guesses-used');
-var lettersGuessed = document.getElementById('letters-guessed');
-var winsText = document.getElementById('wins-text');
-var lossesText = document.getElementById('losses-text');
+var answerArray = [];         // empty array to store correct guesses;
+var guessedArray = [];
 
 
 // picking a random word
@@ -28,70 +19,51 @@ var wordToGuess = words[Math.floor(Math.random() * words.length)];
 
 console.log(wordToGuess + ' / this the random word');
 
-// this is the word randomly selected
-
-var answer = [];
-// for (var i = 0; i < wordToGuess.length; i++); {
-//     answer[i] = '_';
-//     console.log(answer + 'this is the guessed letter');
-// } 
-// var lettersLeftInGuess = wordToGuess.length;
-
-// this runs when a key is pressed and logs the letter guessed
 
 document.onkeyup = function (event) {
-var guessed = event.key;
-    var guessedLetters = guessed.toLowerCase();
+    var userGuess = event.key;
+    var guessedLetters = userGuess.toLowerCase();
 
-    if (guessedLetters.indexOf(wordToGuess) !== -1) {
-        
-        for (var i = 0; i < wordToGuess.length; i++); {
-            answer.push = '';
-
-            if (guessedLetters[i] === wordToGuess)
-                guessedLetters[i] = guessedLetters[i];
+    for (i = 0; i < valid; i++) {
+        if (valid[i] !== guessedLetters) {
+            alert('That was not a letter, please chose a letter');
         }
-                
-        console.log(answer + 'this is the guessed letter');
-    } 
+    }
 
-    
+    for (j = 0; j < wordToGuess.length; j++){
+        if (wordToGuess[j] === guessedLetters) {
+            console.log('you found one match');
+            answerArray[j] = guessedLetters;
+    }
+    for (k = 0; k < wordToGuess.length; k++){
+        if (wordToGuess[k] !== guessedLetters){
+            guessedArray[k] = guessedLetters;
+        }
+    }
+    }
+    console.log("choice made is " + userGuess);
 
-    // for (var j = 0; j < wordToGuess; j++){
-    //     if (wordToGuess[j] === guessed) {
-    //         answer.push[j] = guessed;
-    //     console.log(guessed + 'is this the guess???')
-    //     }
         
-    // }
-   
-    console.log("choice made is " + guessedLetters);
-    triesUsed++;
     triesLeft--;
 
+
+    var userGuess = document.getElementById('user-guess');
+    var guessesLeft = document.getElementById('guesses-left');
+    var winsText = document.getElementById('wins-text');
+    var lettersGuessed = document.getElementById('letters-guessed');
+    var guessedLetters = document.getElementById('guessed-letters');
+    var currentWord = document.getElementById('current-word');
     
 
 
-// if (lettersLeftInGuess > 0) {
-//     console.log(answer.join(' ') + 'this should add the letters');
-// }
-//     lettersLeftInGuess = wordToGuess.length-triesUsed;
-
-
-    console.log(triesLeft + ' guesses left');
-    console.log(triesUsed + ' guesses used');
-
-
-
-
-    
-    
     // Displays progress by step
 
     guessesLeft.textContent = 'You have ' + triesLeft + ' guesses to figure it out';
-    userGuess.textContent = 'Your last guess was: ' + guessed;
-    lettersGuessed.textContent = 'These are the letters you have tried: ' + guessedLetters;
-    winsText.textContent = 'You have guessed ' + wins + ' words, we will see who gets 11 out of 20!'
+    guessedLetters.textContent = 'These are the letters you have tried: ' + guessedLetters;
+    lettersGuessed.textContent = 'Your last guess was: ' + guessedLetters;
+    winsText.textContent = 'You have guessed ' + wins + ' words, we will see who gets 11 out of 20!';
+    currentWord.textContent = answerArray;
+    guessedLetters.textContent = 'Wrong letters you have chosen so far: ' + guessedArray;
     
 };
 
