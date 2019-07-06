@@ -1,0 +1,47 @@
+body{
+    background:lightblue;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+h1{
+    font-weight: bolder;
+    font-size: 2em;
+    text-align: center;
+    color:darkblue;
+    margin: 25px;
+}
+p{
+    margin: 20px;
+    padding: 10px;
+}
+
+#instructions{
+    font-size: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+#any-key{
+    font-size: 25px;
+    font-weight: bold;
+    color:red;
+}
+
+#pics{
+    align-content: center;
+}
+
+#current-word{
+    font-size: 60px;
+    padding: 25px;
+    color: darkblue;
+    text-align: center;
+}
+
+#game{
+    font-weight: bold;
+    font-size: 24px;
+    color:gray;
+}
+
