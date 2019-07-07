@@ -28,8 +28,8 @@ p{
     color:red;
 }
 
-#pics{
-    align-content: center;
+#iwon, #last{
+    display: none;
 }
 
 #current-word{
