@@ -70,7 +70,7 @@ if (!wordToGuess.split('').includes(userGuess)) {
   swap();
   
 
-if (wordToGuess.split('').includes(answerArray)) {
+if (wordToGuess===answerArray.join(' ')) {
         wins++
         document.getElementById('iwon').style.cssText = 'display:block';
         document.getElementById('gallows').style.cssText = 'display:none';
