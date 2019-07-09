@@ -30,6 +30,7 @@ document.onkeyup = function (event) {
   var userGuess = event.key;
   var guessedLetters = userGuess.toLowerCase();
 
+
   // if user's choice does not match the word reduce the # of tries
 if (!wordToGuess.split('').includes(userGuess)) {
   maxTries++;
@@ -70,15 +71,15 @@ if (!wordToGuess.split('').includes(userGuess)) {
   swap();
   
 
-if (wordToGuess===answerArray.join(' ')) {
-        wins++
-        document.getElementById('iwon').style.cssText = 'display:block';
-        document.getElementById('gallows').style.cssText = 'display:none';
-      } else if (maxTries === 10) {
+if (wordToGuess===answerArray.join('') && maxTries < 10) {
+  wins++;
+  document.getElementById('gallows').style.cssText = 'display:none';
+  document.getElementById('iwon').style.cssText = 'display:block';
+} else if (maxTries >= 10) {
   losses++;
-        document.getElementById('gallows').style.cssText = 'display:none';
-        document.getElementById('last').style.cssText = 'display:block';
-      }
+  document.getElementById('gallows').style.cssText = 'display:none';
+  document.getElementById('last').style.cssText = 'display:block';
+}
 
 
 // this is to be able to avoid undefined on guessed letter and populate the latest choice in game
