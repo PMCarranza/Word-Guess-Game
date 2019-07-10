@@ -1,6 +1,6 @@
 // array containing words to be guessed w/o spaces for now
 
-var words = ['baseball', 'football', 'ronaldo', 'joedimaggio', 'tedwilliams', 'dodgers', 'barcelona', 'mariners', 'worldcup', 'alexmorgan', 'miahamm', 'romario', 'edgarmartinez', 'junior', 'acmilan', 'pele', 'seattlereign', 'guatemala', 'refriedbeans', 'tresleches'];
+var words = ['baseball', 'football', 'ronaldo', 'joedimaggio', 'tedwilliams', 'dodgers', 'barcelona', 'mariners', 'worldcup', 'alexmorgan', 'miahamm', 'romario', 'edgarmartinez', 'junior', 'acmilan', 'pele', 'seattlereign', 'guatemala', 'refriedbeans', 'tresleches', 'forgiveness', 'justice', 'acceptance', 'bondad', 'amor'];
 
 
     // variables needed
@@ -9,8 +9,9 @@ var losses = 0;
 var maxTries = 0;
 var answerArray = [];         // empty array to store correct guesses;
 var guessedArray = [];
-var missedLetters;
+var missedLetters ;
 var wordToGuess;
+
 
     // picking a random word
 var wordToGuess = words[Math.floor(Math.random() * words.length)];
@@ -22,20 +23,20 @@ for (j = 0; j < wordToGuess.length; j++) {
   answerArray[j] = '_';
 };
 
-//  let's see if there is a win 
-
 
 //getting guess from user
 document.onkeyup = function (event) {
-  var userGuess = event.key;
-  var guessedLetters = userGuess.toLowerCase();
-
+  if (event.keyCode >= 65 && event.keyCode <= 90) {
+    var userGuess = event.key;
+    var guessedLetters = userGuess.toLowerCase();
+  }else{
+  alert('letters only');
+  }
 
   // if user's choice does not match the word reduce the # of tries
 if (!wordToGuess.split('').includes(userGuess)) {
   maxTries++;
 }
-  
   
 // container of image to be swapped on wrong guesses
   document.getElementById('gallows').src = ''; 
@@ -47,8 +48,6 @@ if (!wordToGuess.split('').includes(userGuess)) {
       answerArray[j] = guessedLetters;
     }     
   }
-
-
 
 
   // Hiding wining/lossing images and press any key text
@@ -81,7 +80,6 @@ if (wordToGuess===answerArray.join('') && maxTries < 10) {
   document.getElementById('last').style.cssText = 'display:block';
 }
 
-
 // this is to be able to avoid undefined on guessed letter and populate the latest choice in game
   missedLetters =guessedLetters;
 
@@ -100,5 +98,5 @@ if (wordToGuess===answerArray.join('') && maxTries < 10) {
   lettersGuessed.innerHTML = 'Your last choice was ' + missedLetters;
   guessedLetters.innerHTML = 'These are the letters you have selected ' + guessedArray + ' so far';
   winsText.textContent = 'You have guessed ' + wins + ' words, we will see who gets 11 out of 20!';
-  lossesText.textContent = 'You have not guessed ' + losses + ' words.';
+  lossesText.textContent = 'You have won ' + wins + ' while I have won ' + losses;
 };
