@@ -50,7 +50,7 @@ for (j = 0; j < wordToGuess.length; j++) {
   document.getElementById('instructions-text').style.cssText= 'display: none';
 
   document.getElementById('last').style.cssText = 'display: none';
-  document.getElementById('iwon').style.cssText = 'display: none';
+  document.getElementById('hungIwon').style.cssText = 'display: none';
 
 
     // populate array with choices not in the word to be guessed
