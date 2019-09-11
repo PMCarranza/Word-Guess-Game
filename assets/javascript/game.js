@@ -68,7 +68,7 @@ for (j = 0; j < wordToGuess.length; j++) {
 if (wordToGuess===answerArray.join('') && maxTries < 10) {
   wins++;
   document.getElementById('gallows').style.cssText = 'display:none';
-  document.getElementById('iwon').style.cssText = 'display:block';
+  document.getElementById('hungIwon').style.cssText = 'display:block';
   reStart();
 } else if (maxTries >= 10) {
   losses++;
