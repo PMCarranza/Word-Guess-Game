@@ -2,7 +2,7 @@
 
 ## **aka** 
 
-# **Hangman game**
+# **Hangman**
 
 ### **Functionality**
 
@@ -26,6 +26,9 @@ As the user guesses the correct letters, they are revealed:  _a _ o _  _ a.
 Number of Guesses Remaining: (# of guesses remaining for the user).
 Letters Already Guessed: (Letters the user has guessed, displayed like a z r l).
 After the user wins/loses the game asks to "Press any key to get started!".
+
+### **Project Status**
+I have decided to not develop this app any further, I might considered changing the colors used but other than that I want this app to remain as is to be reminded of where my road in development started.
 
 Thanks for looking at my app.
 I hope you had a chance to play the game.
